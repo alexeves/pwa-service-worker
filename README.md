@@ -75,7 +75,11 @@ if ('serviceWorker' in navigator) {
 
 Add the above registration code to `./src/index.js`, include that js from `index.html` and run in browser. In Chrome Tool, go to Application tab, and see that the service worker has registered with success.
 
-If it is not successful (see console output), check the path to the service worker is written from the root, not within the `./src` folder (the browser sees things from the `index.html` directory onwards). 
+If it is not successful (see console output), check the path to the service worker is written from the root, not within the `./src` folder (the browser sees things from the `index.html` directory onwards).
+
+**Important**
+
+A service worker listens on `fetch` event's for resources (URLs) that are inside the scope of the service worker. The scope is determined from the location of the service worker. For example, if it lives in the root directory, then it will intercept all requests for the entire domain. If the service worker lives in `example/service_worker.js` then it will only intercept requests that begin with `/example` in the URL, e.g `.com/example/hello`.
 
 
 
