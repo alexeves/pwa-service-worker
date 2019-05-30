@@ -71,7 +71,9 @@ if ('serviceWorker' in navigator) {
 }
 ```  
 
-(Note, whilst the registration code will run on every visit, the browser will know if already registered and so subsequent calls will not be a drain on bandwidth)
+Note, whilst the registration code will run on every visit, the browser will know if already registered and so subsequent calls will not be a drain on bandwidth. Once it has been registered and subsequently activated in the browser, it can handle any `fetch` events when the user next visits the site from that browser. Effectively, once activated, the ` navigator.serviceWorker.register()` method is a no-op method, and whilst it will still be called, it needn't be.
+
+The service worker intercepts requests _before_ the request for any pages under its scope are sent to the server.
 
 Add the above registration code to `./src/index.js`, include that js from `index.html` and run in browser. In Chrome Tool, go to Application tab, and see that the service worker has registered with success.
 
@@ -81,8 +83,11 @@ If it is not successful (see console output), check the path to the service work
 
 A service worker listens on `fetch` event's for resources (URLs) that are inside the scope of the service worker. The scope is determined from the location of the service worker. For example, if it lives in the root directory, then it will intercept all requests for the entire domain. If the service worker lives in `example/service_worker.js` then it will only intercept requests that begin with `/example` in the URL, e.g `.com/example/hello`.
 
+For more information on performance and service worker registration, see here [https://developers.google.com/web/fundamentals/primers/service-workers/registration](https://developers.google.com/web/fundamentals/primers/service-workers/registration).
 
+#### Step 2: Activation
 
+[https://developers.google.com/web/fundamentals/primers/service-workers/#install_a_service_worker](https://developers.google.com/web/fundamentals/primers/service-workers/#install_a_service_worker)
 
 
 
