@@ -1,9 +1,13 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('./src/service_worker.js').then(function(registration) {
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      console.log('ServiceWorker registration failed: ', err);
-    });
+    navigator.serviceWorker.register('/service_worker.js')
+      .then(registration =>  console.log('SW registered: ', registration))
+      .catch(error => console.log('SW registration failed: ', error));
   });
+
+  setTimeout(() => {
+    const img = new Image();
+    img.src = '/dog.svg';
+    document.body.appendChild(img);
+  }, 3000);
 }

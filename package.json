@@ -2,7 +2,7 @@
   "name": "pwa-service-worker",
   "version": "1.0.0",
   "description": "",
-  "main": "src/service_worker.js",
+  "main": "service_worker.js",
   "dependencies": {},
   "devDependencies": {
     "webpack": "^4.32.2",
