@@ -9,7 +9,8 @@ self.addEventListener('install', event => {
    * The value that we retrieve back when we fetch '/cat.svg' from the cache is the actual content of that resource.
    * So as you'd expect, it's a key=>value store, but the value is implied by grabbing the contents of 'key'.
    *
-   * The browser simply sets the 'key' as the resource path, and on retrieval, fetches the contents at that path
+   * The browser simply sets the 'key' as the resource path, and on retrieval, fetches the contents at that path.
+   * In fact, the .add call actually fetches the resource and caches it, so if it does not exist, we will get an error.
    *
    * View the cache in Chrome Tools => Application => Cache Storage (left hand side).
    */
